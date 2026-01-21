@@ -1,2 +1,14 @@
 {
+  "name": "vendor_name/cli-proj-1-oop",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "pc",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
 }
