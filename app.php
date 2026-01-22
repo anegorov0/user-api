@@ -6,13 +6,21 @@ use App\Model\User;
 use App\Repository\JsonUserRepository;
 use App\Service\UserService;
 use App\Command\UserAddCommand;
+use App\Repository\MysqlUserRepository;
 
 require __DIR__ . '/vendor/autoload.php';
-
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $commandName = $argv[1] ?? null;
 
-$repository = new JsonUserRepository(__DIR__ . '/db/users.json');
+$dbSource = $_ENV['DB_SOURCE'] ?? 'json';
+if ($dbSource === 'mysql') {
+    $repository = new MysqlUserRepository();
+} else {
+    $repository = new JsonUserRepository(__DIR__ . '/db/users.json');
+}
 $userService = new UserService($repository);
 
 $command = [
