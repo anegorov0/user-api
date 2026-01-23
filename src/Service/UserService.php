@@ -29,4 +29,8 @@ class UserService{
     public function nextId(): int{
         return $this->userRepository->nextId();
     }
+
+    public function getNextId(): int{
+        return $this->userRepository->nextId();
+    }
 }

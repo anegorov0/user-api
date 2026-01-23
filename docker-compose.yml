@@ -1,4 +1,16 @@
 services:
+  app:
+    build: .
+    container_name: user_api_app
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - mysql
+    ports:
+      - "8000:8000"
+    command: [ "sleep", "infinity" ]
+
   mysql:
     image: mysql:8.0
     container_name: user_api_mysql
